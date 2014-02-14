@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.string :time
       t.string :campaign_id
       t.string :validity
-      t.string :choice
+      t.string :candidate_id
       
 
       t.timestamps

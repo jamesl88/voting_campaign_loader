@@ -15,7 +15,7 @@
           <td><%= Campaign.find_by_id(vote.campaign_id).name %> </td>
           <td><%= vote.time %></td>
           <td><%= vote.validity %></td>
-          <td><%= vote.choice %></td>
+          <td><%= Candidate.find_by_id(vote.candidate_id).name %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,8 +1,9 @@
 Velti::Application.routes.draw do
-  get "campaigns/index"
+  # get "campaigns/index"
   get "campaigns/show"
-  
-  root "votes#index"
+  get "votes/index"
+
+  root "campaigns#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
