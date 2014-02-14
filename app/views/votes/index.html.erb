@@ -10,9 +10,6 @@
         <th>Choice</th>
       </tr>
 
-
-
-
       <% @votes.each do |vote| %>
         <tr>  
           <td><%= Campaign.find_by_id(vote.campaign_id).name %> </td>

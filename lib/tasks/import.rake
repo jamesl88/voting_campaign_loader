@@ -19,9 +19,16 @@ task :import_votes => :environment do
 
     campaign_id = Campaign.find_or_create_by!(name: campaign_name).id
 
-    v = Vote.new(:time => fields[1], :campaign_id => campaign_id, :validity => validity, :choice => choice)
-    # puts v.inspect
-    v.save!
+    match = line.match(/^VOTE\s\d+\sCampaign:([^ ]+)\sValidity:([^ ]+)\sChoice:([^ ]+)/)
+
+
+    if match.nil?
+      
+    else
+      v = Vote.new(:time => fields[1], :campaign_id => campaign_id, :validity => validity, :choice => choice)
+      # puts v.inspect
+      v.save!
+    end
     
   end
 end
