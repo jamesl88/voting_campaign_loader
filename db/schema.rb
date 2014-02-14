@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140214161807) do
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
+    t.string   "candidate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

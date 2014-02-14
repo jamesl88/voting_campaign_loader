@@ -1,6 +1,12 @@
 Velti::Application.routes.draw do
   # get "campaigns/index"
-  get "campaigns/show"
+  resources :campaigns do
+    member do
+      get :candidates
+    end
+  end
+
+  # get "campaigns/show"
   get "votes/index"
 
   root "campaigns#index"
