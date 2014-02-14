@@ -39,12 +39,6 @@ A campaign is an episode of voting
  values. There is a limited set of values for 'Choice', each of which
  represents a candidate who can be voted for.
 
-Validity classifies the time when the vote arrived, relative to the time
- window when votes will count towards a candidate's score.  Only votes
- with a Validity of 'during' should count towards a candidate's score.
- Other possible values of Validity are 'pre' (message was too early to be
- counted), 'post' (message was too late to be counted). 'pre' and 'post'
- messages should be counted together irrespective of the candidate chosen.
+Validity classifies the time when the vote arrived, relative to the time window when votes will count towards a candidate's score.  Only votes with a Validity of 'during' should count towards a candidate's score. Other possible values of Validity are 'pre' (message was too early to be counted), 'post' (message was too late to be counted). 'pre' and 'post' messages should be counted together irrespective of the candidate chosen.
 
-The CONN, MSISDN, Shortcode and GUID fields are not relevant to this
- exercise.
+The CONN, MSISDN, Shortcode and GUID fields are not relevant to this exercise.
