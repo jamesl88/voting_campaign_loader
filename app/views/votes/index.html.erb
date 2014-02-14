@@ -1,0 +1,26 @@
+<h1>All votes</h1>
+
+<div class='table'>
+  <table>
+    <tbody>
+      <tr>
+        <th>Campaign</th>
+        <th>Time</th>
+        <th>Validity</th>
+        <th>Choice</th>
+      </tr>
+
+
+
+
+      <% @votes.each do |vote| %>
+        <tr>  
+          <td><%= Campaign.find_by_id(vote.campaign_id).name %> </td>
+          <td><%= vote.time %></td>
+          <td><%= vote.validity %></td>
+          <td><%= vote.choice %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
