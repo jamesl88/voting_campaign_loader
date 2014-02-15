@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "campaigns/index.html.erb" do
   before(:each) do
-    
+
     # The vote connects the campaign and the candidate
     vote = FactoryGirl.create(:vote) 
 
@@ -25,6 +25,4 @@ describe "campaigns/index.html.erb" do
 
     expect(page).to have_text "John"
   end
-
-#   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -7,6 +7,7 @@ Velti::Application.routes.draw do
   end
 
   # get "campaigns/show"
+  # match '/campaigns/:id',  :to => 'campaigns#show', as 'campaign' 
   get "votes/index"
 
   root "campaigns#index"

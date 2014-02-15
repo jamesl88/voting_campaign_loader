@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe CampaignsController do
 
-
   describe 'GET #index' do
     it 'responds sucessfully to an http 200 status code' do
       get :index
@@ -24,10 +23,29 @@ describe CampaignsController do
   end
 
 
-  # describe "GET 'show'" do
-  #   it "returns http success" do
-  #     get :show
-  #     expect(response).to render_template("show")
-  #   end
-  # end
+  describe "GET 'show'" do
+
+    before(:each) do
+
+      @vote1 = FactoryGirl.create(:vote)
+      @vote2 = FactoryGirl.create(:vote)
+      @vote3 = FactoryGirl.create(:vote,
+        :validity => 'pre' )
+
+      @campaign = FactoryGirl.create(:campaign)
+      @candidate = FactoryGirl.create(:candidate)
+    end
+
+    it "renders the show template" do
+
+      visit campaign_path(@campaign)
+      expect(response).to render_template("show")
+    end
+
+    it "only returns the candidates which have the 'during' validity" do
+
+      visit campaign_path(@campaign)
+      expect(response).to render_template("show")
+    end
+  end
 end

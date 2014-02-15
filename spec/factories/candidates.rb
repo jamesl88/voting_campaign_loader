@@ -1,7 +1,6 @@
 FactoryGirl.define do 
-  factory :candidate do
-    id 1
+  factory :candidate do |candidate|
     name "John"
-    campaign_id 1
+    candidate.sequence(:campaign_id) { |id| id }
   end
 end

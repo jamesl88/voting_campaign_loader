@@ -1,7 +1,6 @@
 FactoryGirl.define do 
-  factory :campaign do
-    id 1
+  factory :campaign do |campaign|
     name "Campaign-example"
-    candidate_id '1'
+    campaign.sequence(:candidate_id) { |id| id }
   end
 end
