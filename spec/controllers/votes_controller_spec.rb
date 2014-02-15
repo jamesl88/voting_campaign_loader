@@ -13,7 +13,7 @@ describe VotesController do
       expect(response).to render_template("index")
     end
 
-    it 'loads all od the votes into @votes' do
+    it 'loads all of the votes into @votes' do
       vote1, vote2 = Vote.create!, Vote.create!
       get :index
 

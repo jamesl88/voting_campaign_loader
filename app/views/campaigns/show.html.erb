@@ -1,7 +1,9 @@
-<h1><% @campaign.name %></h1>
+<h1>Campaign: <%= @campaign.name %></h1>
 
 <ul class="candidates">
-  <% @candidates.each do |candidate| %>
-    <li><%= candidate.inspect %></li>
+
+  <% @duplicate_names.each do |key,value| %>
+    <li><%= "hello #{key.name} #{value}" %></li>
   <% end %>
+
 </ul>
