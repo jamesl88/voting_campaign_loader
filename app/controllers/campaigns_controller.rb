@@ -10,6 +10,8 @@ class CampaignsController < ApplicationController
     @invalid_votes = @campaign.votes.where.not(:validity => 'during').map { |vote| Candidate.find_by_id(vote.candidate_id) }
 
     @valid_votes = @campaign.votes.where(:validity => 'during').map { |vote| Candidate.find_by_id(vote.candidate_id) }
+
+    @all = [[@valid_votes], [@invalid_votes]]
   end
 
   def duplicate_names(arr)
