@@ -4,10 +4,19 @@ describe "campaigns/index.html.erb" do
   before(:each) do
 
     # The vote connects the campaign and the candidate
-    vote = FactoryGirl.create(:vote) 
 
-    campaign = FactoryGirl.create(:campaign)
+    vote1 = FactoryGirl.create(:vote, :campaign_id => '1')
+    vote2 = FactoryGirl.create(:vote, :campaign_id => '1')
+    
+    vote3 = FactoryGirl.create(:vote, 
+      :campaign_id => '1', 
+      :validity => 'pre') 
+
     candidate = FactoryGirl.create(:candidate)
+    candidate = FactoryGirl.create(:candidate)
+    candidate = FactoryGirl.create(:candidate)
+    
+    campaign = FactoryGirl.create(:campaign)
   end
 
   it "displays the campaign names" do
@@ -25,4 +34,6 @@ describe "campaigns/index.html.erb" do
 
     expect(page).to have_text "John"
   end
+
+
 end

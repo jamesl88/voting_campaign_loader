@@ -1,17 +1,26 @@
 <h1>Campaign: <%= @campaign.name %></h1>
 
-<table> 
-  <tr>
-    <th>Candidate</th>
-    <th>Score</th>
-  </tr>
+<div class='table-main'>
+  <div class="campaign-table">
+    <ul>
+      <li class="title">Candidate</li>
+      <% controller.duplicate_names(@campaign.candidates).each_key do |key| %> 
+      <li><%= key.name %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li class="title">Candidate</li>
+      <% controller.duplicate_names(@valid_votes).each_value do |value| %> 
+      <li><%= value %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li class="title">Votes not counted</li>
+      <% controller.duplicate_names(@invalid_votes).each_value do |value| %> 
+      <li><%= value %></li>
+      <% end %>
 
-  <% @duplicate_names.each do |key,value| %>
-    <tr>  
-      <td><%= key.name %></td>
-      <td><%= value %></td>
-    </tr>
-  <% end %>
-  </table>
+    </ul>
+  </div>
+</div>
 
-</ul>

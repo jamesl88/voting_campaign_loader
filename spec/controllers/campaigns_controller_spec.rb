@@ -27,13 +27,18 @@ describe CampaignsController do
 
     before(:each) do
 
-      @vote1 = FactoryGirl.create(:vote)
-      @vote2 = FactoryGirl.create(:vote)
-      @vote3 = FactoryGirl.create(:vote,
-        :validity => 'pre' )
+      @vote1 = FactoryGirl.create(:vote, :campaign_id => '1')
+      @vote2 = FactoryGirl.create(:vote, :campaign_id => '1')
+      
+      @vote3 = FactoryGirl.create(:vote, 
+        :campaign_id => '1', 
+        :validity => 'pre') 
 
-      @campaign = FactoryGirl.create(:campaign)
-      @candidate = FactoryGirl.create(:candidate)
+      @candidate = FactoryGirl.create(:candidate,:name => 'Jenny')
+      @candidate = FactoryGirl.create(:candidate,:name => 'James')
+      @candidate = FactoryGirl.create(:candidate,:name => 'Kelvin')
+      @campaign = FactoryGirl.create(:campaign)    
+
     end
 
     it "renders the show template" do
@@ -42,10 +47,6 @@ describe CampaignsController do
       expect(response).to render_template("show")
     end
 
-    it "only returns the candidates which have the 'during' validity" do
 
-      visit campaign_path(@campaign)
-      expect(response).to render_template("show")
-    end
   end
 end
