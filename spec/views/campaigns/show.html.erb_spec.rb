@@ -24,7 +24,7 @@ describe "campaigns/show.html.erb" do
 
     visit campaign_path(@campaign)
     expect(page).to have_text('Campaign: Campaign-example')
-    expect(page).to have_text('Error')
+    expect(page).to have_text('Votes not counted')
   end
 
   it "displays the candidate names" do
