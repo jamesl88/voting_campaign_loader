@@ -1,33 +1,48 @@
-<h1>Campaign: <%= @campaign.name %></h1>
+<div class="row">
+  <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <h1 class='title'>Campaign: <%= @campaign.name %></h1>
+      <table class='table'>
+        <tr>
+          <th>Candidate</th>
+          <th>Score</th>
+        </tr>
 
-<div class='table-main'>
-  <div class="campaign-table">
-    <ul class="left">
-      <li class="title">Candidate</li>
-      <% controller.duplicate_names(@valid_votes).each_key do |key| %> 
-      <li><%= key.name %></li>
-      <% end %>
-    </ul>
-    <ul>
-      <li class="title">Score</li>
-      <% controller.duplicate_names(@valid_votes).each_value do |value| %> 
-      <li><%= value %></li>
-      <% end %>
-    </ul>
-  </div>
+        <tr>
+          <% Campaign.duplicate_names(@valid_votes).each do |key,value| %> 
 
-  <div class="campaign-table">
-    <ul class="right">
-      <li class="title">Candidate</li>
-      <% controller.duplicate_names(@invalid_votes).each_key do |key| %> 
-      <li><%= key.name %></li>
-      <% end %>
-    </ul>
-    <ul>
-      <li class="title">Candidate</li>
-      <% controller.duplicate_names(@invalid_votes).each_value do |value| %> 
-      <li><%= value %></li>
-      <% end %>
-    </ul>
-  </div>
+          <td><%= key.name %></td>
+          <td><%= value %></td>
+        </tr>
+        <% end %>
+
+      </table>
+      <p><%= link_to 'Back', '/' %></p>
+    </div>
+  <div class="col-md-4"></div>
 </div>
+
+<div class="row">
+  <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <h3 class='title'>Votes not counted</h3>
+      <table class='table'>
+        <tr>
+          <th>Candidate</th>
+          <th>Error</th>
+        </tr>
+
+        <tr>
+          <% Campaign.duplicate_names(@invalid_votes).each do |key,value| %> 
+
+          <td><%= key.name %></td>
+          <td><%= value %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  <div class="col-md-4"></div>
+</div>
+
+
+

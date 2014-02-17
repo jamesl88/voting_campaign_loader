@@ -5,18 +5,18 @@ describe "campaigns/index.html.erb" do
 
     # The vote connects the campaign and the candidate
 
-    vote1 = FactoryGirl.create(:vote, :campaign_id => '1')
-    vote2 = FactoryGirl.create(:vote, :campaign_id => '1')
+    @vote1 = FactoryGirl.create(:vote, :campaign_id => '1')
+    @vote2 = FactoryGirl.create(:vote, :campaign_id => '1')
     
-    vote3 = FactoryGirl.create(:vote, 
+    @vote3 = FactoryGirl.create(:vote, 
       :campaign_id => '1', 
       :validity => 'pre') 
 
-    candidate = FactoryGirl.create(:candidate)
-    candidate = FactoryGirl.create(:candidate)
-    candidate = FactoryGirl.create(:candidate)
+    @candidate1 = FactoryGirl.create(:candidate)
+    @candidate2 = FactoryGirl.create(:candidate)
+    @candidate3 = FactoryGirl.create(:candidate)
     
-    campaign = FactoryGirl.create(:campaign)
+    @campaign = FactoryGirl.create(:campaign)
   end
 
   it "displays the campaign names" do
@@ -24,16 +24,6 @@ describe "campaigns/index.html.erb" do
     expect(page).to have_text('All Campaigns')
     expect(page).to have_text('Campaign-example')
 
-    click_link "Campaign-example"
-    expect(page).to have_text('Campaign: Campaign-example')
   end
-
-  it "displays the candidate for the campaign" do
-    visit "/"
-    click_link "Campaign-example"
-
-    expect(page).to have_text "John"
-  end
-
 
 end

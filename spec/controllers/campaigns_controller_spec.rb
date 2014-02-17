@@ -26,19 +26,7 @@ describe CampaignsController do
   describe "GET 'show'" do
 
     before(:each) do
-
-      @vote1 = FactoryGirl.create(:vote, :campaign_id => '1')
-      @vote2 = FactoryGirl.create(:vote, :campaign_id => '1')
-      
-      @vote3 = FactoryGirl.create(:vote, 
-        :campaign_id => '1', 
-        :validity => 'pre') 
-
-      @candidate = FactoryGirl.create(:candidate,:name => 'Jenny')
-      @candidate = FactoryGirl.create(:candidate,:name => 'James')
-      @candidate = FactoryGirl.create(:candidate,:name => 'Kelvin')
       @campaign = FactoryGirl.create(:campaign)    
-
     end
 
     it "renders the show template" do
@@ -46,7 +34,6 @@ describe CampaignsController do
       visit campaign_path(@campaign)
       expect(response).to render_template("show")
     end
-
 
   end
 end

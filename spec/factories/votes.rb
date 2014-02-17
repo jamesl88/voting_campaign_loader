@@ -1,7 +1,7 @@
 FactoryGirl.define do 
-  factory :vote do |vote|
-    vote.sequence(:campaign_id) { |id| id}
-    vote.sequence(:candidate_id) { |id| id}
+  factory :vote do
+    campaign_id 1
+    candidate_id 1
     validity "during"
   end
 end

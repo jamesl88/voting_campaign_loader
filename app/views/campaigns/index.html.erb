@@ -1,10 +1,20 @@
-<% provide(:title, 'All Campaigns') %>
-<h1>All Campaigns</h1>
+<div class="row">
+  <div class="col-md-3"></div>
+    <div class="col-md-5 campaigns">
+      <h1>All Campaigns</h1>
+      <table class='table'>
+        <tr>
+          <th>Campaigns</th>
+        </tr>
+        <tr>
+          <% @campaigns.each do |campaign| %>
+          <td><%= link_to campaign.name, campaign%></td>
+        </tr>
+        <% end %>
 
-<ul class="campaigns">
-  <% @campaigns.each do |campaign| %>
-    <li>
-      <%= link_to campaign.name, campaign %>
-    </li>
-  <% end %>
-</ul>
+      </table>
+    </div>
+  <div class="col-md-3"></div>
+</div>
+
+
