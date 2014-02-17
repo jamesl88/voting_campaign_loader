@@ -4,6 +4,7 @@ Technical Test
 To begin run 'rake import_votes' in your terminal
 
 To remove the data from your database run 'rake db:reset'
+
 To see all votes '/votes/index'
 
 ---------------------------------------------------------
