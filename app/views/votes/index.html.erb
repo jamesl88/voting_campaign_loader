@@ -1,23 +1,30 @@
-<h1>All votes</h1>
+<% content_for :title, "All votes" %>
 
-<div class='table'>
-  <table>
-    <tbody>
-      <tr>
-        <th>Campaign</th>
-        <th>Time</th>
-        <th>Validity</th>
-        <th>Choice</th>
-      </tr>
+<h1 class="title">All votes</h1>
+<div class="row">
+  <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class='table'>
+        <table class='table'>
+          <tbody>
+            <tr>
+              <th>Campaign</th>
+              <th>Time</th>
+              <th>Validity</th>
+              <th>Choice</th>
+            </tr>
 
-      <% @votes.each do |vote| %>
-        <tr>  
-          <td><%= Campaign.find_by_id(vote.campaign_id).name %> </td>
-          <td><%= vote.time %></td>
-          <td><%= vote.validity %></td>
-          <td><%= Candidate.find_by_id(vote.candidate_id).name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+            <% @votes.each do |vote| %>
+              <tr>  
+                <td><%= Campaign.find_by_id(vote.campaign_id).name %> </td>
+                <td><%= vote.time %></td>
+                <td><%= vote.validity %></td>
+                <td><%= Candidate.find_by_id(vote.candidate_id).name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <div class="col-md-2"></div>
 </div>
