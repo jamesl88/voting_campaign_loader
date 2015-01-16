@@ -1,5 +1,6 @@
-Technical Test
-==============
+# Voting campaign loader
+### Technical Test
+
 
 ```
 rake import_votes
