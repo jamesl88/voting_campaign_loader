@@ -3,7 +3,7 @@ Technical Test
 
 To begin run 'rake import_votes' in your terminal
 
-Also run 'rake db:migrate RAILS_ENV=test' 
+Also run 'RAILS_ENV=test rake db:migrate' 
 
 Then 'bundle exec rspec'
 

@@ -1,0 +1,37 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 TV SMS voting campaign test\
+\
+{\field{\*\fldinst{HYPERLINK "https://github.com/jamesl88/technical-test-campaign"}}{\fldrslt https://github.com/jamesl88/technical-test-campaign}}\
+\
+\
+This is the description of my approach to this problem.\
+\
+The first thing I did was create both the model for votes and campaign, the reason of this was because I could tell from the data that they have a one-to-many relationship and so I added the associations accordingly. Based on the data, the vote model would need a validity, choice, and campaign id field (campaign id being the link between tables). The campaign model would only need a name field. Then I set up the routes so I can view the page.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 I\'92ve also set up rspec by adding it to the gemfile, I should\'92ve done this first so that a _spec.rb file is automatically created when I generate a new controller or model. I added factory girl as well because I knew I was going to be testing with multiple campaigns, votes and candidates.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+I\'92ve never experienced creating a command-line script in rails before so that was a good feature to discover and implement, I added a custom rake task to do this. (/lib/tasks/import.rake)\
+My initial thought was to add the data by running the files through a loop because of the way it was structured and query them by index. then I would use gsub to remove the \'92title\'92 of the data (e.g. \'91field[2].gsub(/Campaign:/, \'91\'92)\'94. which worked. I also place the \'91votes.txt\'92 file in /lib/tasks/, the reason for this was that I was unsure where else to put it.\
+\
+One of the problems I had to overcome was an error message I got when running my import. \
+\'91invalid byte sequence in UTF-8\'92. One of the things I do is google the error message and hopefully find the solution online, unfortunately there wasn\'92t any. So what I did was took the error in steps, firstly I ran .inspect on the import to see what was going on, it just so happens that script was actually running, then it reached the error and so stopping the script. There I could see that it was a single line which caused the whole error, I had to assume that was placed there intentionally and so I used exception handling to solve the error which skipped the line completely (as it wasn\'92t a valid line anyway), then I also made sure that a error message is displayed as well as the error itself.\
+\
+I managed to display everything into a view and this was where I found an issue with my import solution. It turns out that some lines do not contain the validity or even VOTE which means that there are some data that is not useable and shouldn\'92t be present in the database. I had to refactor my custom rake task. After some thought I realised that the most reliable way to import the data was to use regular expressions. This way I can guarantee only relevant data is imported. From what I\'92ve read, to \'91test\'92 a custom rake task you simply run it.\
+\
+The next step was to add a candidate model because candidates need to be displayed. I had to think about whether a candidate is present in more that one campaign. This drove my decision to create the model. Initially I thought they had a many to many relationship but they were issues when querying, I must admit it took me a while to realise that the correct association was in fact a has_many :through relationship via the votes. Discovering this was probably one of the more significant achievements in my opinion.\
+\
+\
+To get the score of a candidate I simply queried all the votes with the validity of \'91during\'92 from a single campaign and added up the duplicates (names) for each individual vote and created a hash out of it. The key being the name and the value being the tallied votes (score). \
+\
+After the this step was when I ran into problem I was unable to figure out. When presenting the data in the view I ran a .each loop to iterate through the hash and display it accordingly on the table, everything worked fine until I added the votes for the invalid votes as well and realised that there was an extra name that didn\'92t have \'91any\'92 valid votes and so the rows in the tables were off. Also because of this problem, I was unable to place the (invalid) values next to the correct candidate because the ordering was off. This lead to many trials and errors as I was trying to find the solution. This took me hours and in the end I found that the only way to do this is have a multidimensional hash in which a key has multiple values (array). I tried many attempts to implement is but had no luck not to mention the code looking abysmal. In the end I had to settle for another table which contained the invalid data.\
+\
+After this I use twitter bootstrap to help with the css to save me time as well as give the views a little bit of polish. \
+ \
+In conclusion, I enjoyed building this app, I\'92ve leant quite a lot and am satisfied with the end result overall. If I had more time I would probably spend trying to figure out a way to get the candidates hash multiple values so I can display all the data in one table as well as spending time improving the aesthetics of the application. }
