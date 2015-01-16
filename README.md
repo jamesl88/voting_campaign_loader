@@ -1,16 +1,15 @@
 Technical Test
 ==============
 
-To begin run 'rake import_votes' in your terminal
+```
+rake import_votes
+RAILS_ENV=test rake db:migrate
+bundle exec rspec
+```
 
-Also run 'RAILS_ENV=test rake db:migrate' 
+To remove the data from your database run `rake db:reset`
 
-Then 'bundle exec rspec'
-
-
-To remove the data from your database run 'rake db:reset'
-
-To see all votes '/votes/index'
+To see all votes `/votes/index`
 
 ---------------------------------------------------------
 
